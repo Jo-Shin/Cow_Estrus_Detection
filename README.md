@@ -14,6 +14,10 @@
     - layers = all
 - test data에 inference 시 detection_min_confidence는 0.4
 
+## Sample inference
+**anestrus(비발정)**, **estrus(발정)**
+
+
 
 
 
