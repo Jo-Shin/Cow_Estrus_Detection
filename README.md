@@ -16,7 +16,7 @@
 ## Customized Code
 - ```mrcnn/cow.py```: Pretrained Mask R-CNN을 fine-tuning하기 위한 Code
 - ```mrcnn/contour.py```: Model의 inference 결과에서 테두리의 좌표값을 구하는 code
-- ```inference.ipydb```: Inference Code
+- ```inference.ipynb```: Inference Code
 
 ## Sample Inference
 **anestrus(비발정)**, **estrus(발정)**
