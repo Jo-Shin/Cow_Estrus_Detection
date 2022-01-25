@@ -19,7 +19,7 @@
 - ```inference.ipynb```: Inference Code
 
 ## Sample Inference
-- class: anestrus(비발정), estrus(발정)
+- Class: anestrus(비발정), estrus(발정)
 - Left: 원본 / Right: inference 결과
 
 ![image](https://user-images.githubusercontent.com/71592336/150928278-e90f4a28-89ac-4e6a-9006-737cde1433da.png)
