@@ -1,30 +1,5 @@
 """
-Mask R-CNN
-Train on the toy Balloon dataset and implement color splash effect.
-
-Copyright (c) 2018 Matterport, Inc.
-Licensed under the MIT License (see LICENSE for details)
-Written by Waleed Abdulla
-
-------------------------------------------------------------
-
-Usage: import the module (see Jupyter notebooks for examples), or run from
-       the command line as such:
-
-    # Train a new model starting from pre-trained COCO weights
-    python3 balloon.py train --dataset=/path/to/balloon/dataset --weights=coco
-
-    # Resume training a model that you had trained earlier
-    python3 balloon.py train --dataset=/path/to/balloon/dataset --weights=last
-
-    # Train a new model starting from ImageNet weights
-    python3 balloon.py train --dataset=/path/to/balloon/dataset --weights=imagenet
-
-    # Apply color splash to an image
-    python3 balloon.py splash --weights=/path/to/weights/file.h5 --image=<URL or path to file>
-
-    # Apply color splash to video using the last weights you trained
-    python3 balloon.py splash --weights=last --video=<URL or path to file>
+Mask R-CNN, image segmentation model, for cow estrus detection
 """
 
 import os
@@ -77,7 +52,6 @@ class CowConfig(Config):
     STEPS_PER_EPOCH = 64
 
     # Skip detections with < 90% confidence
-    # 수정할 부분
     DETECTION_MIN_CONFIDENCE = 0.6
 
 
@@ -93,28 +67,15 @@ class CowDataset(utils.Dataset):
         """
         # Add classes. We have two class to add.
         # class 0: background
-
-        ##################################################
-        #################### 수정 ########################
-        ##################################################
         self.add_class("cow", 1, "anestrus")  # 비발정
         self.add_class("cow", 2, "estrus")  # 발정
-        ##################################################
 
         # Train or validation dataset?
-        # 확인용데이터_채은 안에 있는 폴더 두 개를 의미함.
         assert subset in ["train", "val"]
 
         # Load annotations (json file)
-
-        ##################################################
-        #################### 수정 ########################
-        ##################################################
-        # 채은 경로
+        # 경로
         json_file = json.load(open(os.path.join(dataset_dir, subset, subset + "_answer.json")))
-        # 신형 경로
-        # json_file = json.load(open(os.path.join(dataset_dir, subset + "_answer.json")))
-        ##################################################
 
         Images = json_file['images']  # 이미지
         annotations = pd.DataFrame(json_file['annotations'])  # 이미지 속 인스턴스
@@ -122,27 +83,13 @@ class CowDataset(utils.Dataset):
         # utils.Dataset에서 상속한 image_info 리스트에 이미지와 인스턴스의 정보를 저장
         for image in Images:
             # 이미지 파일 경로
-
-            ##################################################
-            #################### 수정 ########################
-            ##################################################
-            # 채은
             image_path = os.path.join(dataset_dir,
                                       subset + '/' + image['file_name'])
-
-            # 신형 경로
-            # image_path = os.path.join(dataset_dir,
-            #                           subset+'_images/'+image['file_name'])
-            ##################################################
-            ##################################################
 
             # 이미지 파일의 높이/너비
             height, width = image['height'], image['width']
 
             # 이미지 속 인스턴스들의 테두리 좌표 및 class
-
-            #######################수정#######################
-            ##################################################
             # 좌표값
             polygons = []
             for polygon in annotations.loc[annotations.image_id == image['id'],
@@ -154,13 +101,9 @@ class CowDataset(utils.Dataset):
                 elif i % 2 == 1 and coord >= height:
                   polygon_resize[i] = coord-1
               polygons.append(polygon_resize)
-            ##################################################
-
-            # polygons = [x for x in annotations.loc[annotations.image_id == image['id'],'segmentation']]
             
             category_id = [x for x in annotations.loc[annotations.image_id == image['id'],
                                                       'category_id']]
-
             # image_info 리스트에 정보를 저장
             self.add_image(
                 'cow',  # source
