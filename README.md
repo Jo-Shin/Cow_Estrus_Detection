@@ -2,7 +2,7 @@
 - By: 연세대학교 Data Science Lab 5기 조신형, 5기 박채은, 6기 박상윤, 6기 이승재
 
 ## 주제 및 데이터
-- **주제** : 한우의 발정 시기를 파악하여 발정 시기를 놓치지 않고 수정에 성공하도록 스마트축사 이미지 데이터 내에 발정행동중인 한우를 판별하는 **instance segmentation model**을 개발
+- **주제** : 한우의 발정 시기를 파악하여 발정 시기를 놓치지 않고 수정에 성공하도록 스마트축사 이미지 데이터 내에 발정행동중인 한우를 판별하는 **Instance Segmentation Model**을 개발
 - **데이터**: 축사 내 한우의 이미지 파일 *(저작권의 이유로 본 repository에 업로드하지 않음)*
 
 ## Model 
@@ -19,8 +19,8 @@
 - ```inference.ipynb```: Inference Code
 
 ## Sample Inference
-- class: **anestrus(비발정)**, **estrus(발정)**
-- left: 원본 / right: inference 결과
+- class: anestrus(비발정), estrus(발정)
+- Left: 원본 / Right: inference 결과
 
 ![image](https://user-images.githubusercontent.com/71592336/150928278-e90f4a28-89ac-4e6a-9006-737cde1433da.png)
 
