@@ -7,14 +7,19 @@
 - **데이터**: 축사 내 한우의 이미지 파일 (*저작권의 이유로 본 repository에 업로드하지 않음*)
 
 ## Model 
-- coco dataset에 pretrained된 mask R-cnn model을 한우 이미지를 통해 fine-tuning
-- fine-tuning 시 다양한 hyper-parameter를 조정해 보았으나, 최고 성능을 낸 hyper-parameter는 아래와 같음
+- Coco dataset에 pretrained된 Mask R-CNN Model을 한우 이미지를 통해 fine-tuning
+- Fine-tuning 시 다양한 hyper-parameter를 조정해 보았으나, 최고 성능을 낸 hyper-parameter는 아래와 같음
     - rpn_nms_threshold = 0.6
     - lr = 0.001
     - layers = all
-- test data에 inference 시 detection_min_confidence는 0.4
+- Test data에 inference 시 detection_min_confidence는 0.4
 
-## Sample inference
+## Customized Code
+- ```mrcnn/cow.py```: Pretrained Mask R-CNN을 fine-tuning하기 위한 Code
+- ```mrcnn/contour.py```: Model의 inference 결과에서 테두리의 좌표값을 구하는 code
+- ```inference.ipydb```: Inference Code
+- 
+## Sample Inference
 **anestrus(비발정)**, **estrus(발정)**
 
 
