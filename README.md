@@ -20,6 +20,9 @@
 
 ## Sample Inference
 **anestrus(비발정)**, **estrus(발정)**
+![image](https://user-images.githubusercontent.com/71592336/150928278-e90f4a28-89ac-4e6a-9006-737cde1433da.png)
+![image](https://user-images.githubusercontent.com/71592336/150928852-f231b13f-c582-4a4d-a01c-c3ea99d370d1.png)
+
 
 
 
